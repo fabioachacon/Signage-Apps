@@ -14,8 +14,6 @@ var weatID;
 function adjustElements(){
     var windowWidth = $(window).outerWidth(true);
     var windowHeight = $(window).innerHeight(true);
-    
-    var docHeight = $('body').height();
 
     var barHeight = $("#black_bar").css('height');
     var barTop = windowHeight - barHeight;

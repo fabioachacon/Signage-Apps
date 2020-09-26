@@ -1,0 +1,80 @@
+body{
+    background-color: transparent;
+    color: transparent;
+    
+}
+
+#mainText{
+	font-size: 85px;
+	width: 1200px;
+	margin: 0px;
+        left: 180px;
+	text-align: center;
+	position: absolute;
+	top: 120px;
+	font-weight: bold;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+        color: transparent;
+}
+
+#header{
+	position: relative;
+	top: -8px;
+	height:40px;
+	padding:50px;
+	margin-left: -10px;
+	margin-right: -10px;
+	background-image: linear-gradient(180deg, #66c0a2 20%, #4E8d82 80%); 
+	display: none;
+}
+
+#mainName{
+	position: absolute;
+	font-size: 45px;
+	font-family: sans-serif;
+	font-weight: bold;
+	top: 0px;
+	left: 13rem;
+	display: inherit;
+	background: -webkit-linear-gradient(white 50%, gray 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#outerBox{
+	position: absolute;
+	border-radius: 100%;
+	height: 46px;
+	padding: 45px;
+	width: 45px;
+	top: 4px;
+	left: 20px;
+	background-color: #478973;
+	display: inherit;
+}
+
+#innerBox{
+	position: absolute;
+	left:12px;
+	top: 8px;
+	padding: 25px;
+	border-radius: 100%;
+	background-color: white;
+	height: 60px;
+	width: 60px;
+        display: inherit;
+}
+
+#signal{
+        position: absolute;
+        display: inherit;
+	top:-3px;
+	padding: 0px;
+	margin: 0px;
+	z-index: 1;
+        font-family: Georgia;
+        font-weight: bold;
+        font-size: 118px;
+        color: #478973;
+}
+

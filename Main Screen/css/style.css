@@ -1,0 +1,157 @@
+body{
+    overflow: hidden;
+}
+
+#video{
+    position: relative;
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    left: 0px;
+    /* width: 1700px; */
+    /* margin-left: 50px;
+    margin-right: -10px;
+    margin-top: -10px;
+    margin-left: -10px; */
+    object-fit: cover;
+}
+
+#black_bar{
+    position: fixed;
+    background-color: black;
+    /* width: 1700px; */
+    height: 80px;
+    margin-left: -10px;
+    top: 51vw;
+}
+
+.ticker{
+    position: absolute;
+    background-color: transparent;
+    text-align: center;
+    color: gray;
+    font-family: sans-serif;
+    font-size: 27px;
+    font-weight:bold;
+    margin: 0px;
+    padding: 0px;
+    top: 20px
+}
+
+.price{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.sign{
+    color: lightgray;
+    font-size: 23px;
+    font-weight: lighter;
+}
+
+#dollar{
+    left: 28vw;
+}
+
+#bovespa{
+    left: 41.3vw;
+}
+
+#nasdaq{
+    left:60vw;
+}
+
+#dollarPrice{
+    position: relative;
+    color: white;
+    left: 3px;
+
+}
+
+/* #nasdaqPrice{
+    color: whitesmoke;
+    font-family: Arial;
+    top: 1px;
+}
+
+#bovespaPrice{
+    color: whitesmoke;
+    font-family: Arial;
+    top: 1px;
+} */
+
+#time{
+    position: absolute;
+    top: 13px;
+    font-weight: bold;
+    color: white;
+    left: 2vw;
+    margin: 0px;
+    font-size: 37px;
+}
+
+#day{
+    position: absolute;
+    font-family: sans-serif;
+    top: 13px;
+    left: 13vw;
+    font-weight: bold;
+    margin: 0px;
+    background-color: transparent;
+}
+
+#day > p:nth-child(1){
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    color: lightgray;
+}
+
+#day > p:nth-child(2){
+    font-size: 15px;
+    font-weight: lighter;
+    color: lightgray;
+    margin-top: 4px;
+}
+
+#weather{
+    position: absolute;
+    top: 17px;
+    font-weight: bold;
+    left: 20vw;
+    margin: 0px;
+    font-size: 31px;
+    color: lightblue;
+}
+
+#icon{
+    position: absolute;
+    margin: 0px;
+    background-color: transparent;
+    height: 45px;
+    width: 45px;
+    right: 62px;
+    top: -4px
+}
+
+#callframe{
+    background-color: transparent;
+    position: absolute;
+    overflow: hidden;
+    height: 45vw;
+    width: 80vw;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    top: 2vw;
+    left: 10vw;
+}
+
+#newsframe{
+    position: relative; 
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    display: none;
+}
+

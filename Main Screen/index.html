@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src='js/api.js'></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="preload" href="news/index.html" as='document'>
+</head>
+<body onload='load()'>
+    <video id='video' autoplay controls>
+        <source id='mp4Video' src="video/video1.mp4">
+    </video>
+    <iframe src="patientcall/index.html" frameborder="0" id='callframe'></iframe>
+    <!-- <iframe src="news/index.html" frameborder="0" id='newsframe'></iframe> -->
+    <div id='black_bar'>
+        <div id='time' class='ticker'></div>
+        <div id='day' class='ticker'>
+            <p id='paraDay'></p>
+            <p id='paraMonth'></p>
+        </div>
+        <div id='weather' class='ticker'></div>
+        <div id='dollar' class='ticker'>USD <span class='sign'>R$</span><span class='price' id='dollarPrice'></span></div>
+        <div id='bovespa' class='ticker'>Ibovespa <span class='sign'></span><span class='price' id='bovespaPrice'></span></div>
+        <div id='nasdaq' class='ticker'>Nasdaq <span class='sign'></span><span class='price' id='nasdaqPrice'></span></div>
+    </div>
+</body>
+</html>

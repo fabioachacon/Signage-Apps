@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang='pt_BR'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chamada - Centro do Sorriso</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-size: 20px;
+        font-family: 'Monserrat', sans-serif;
+        line-height: 1.7;
+      }
+      form {
+        position: relative;
+        padding: 0 3rem;
+        margin: 1rem 0;
+        font-weight: 100;
+        bottom: 5rem;
+        margin-top: 6rem;
+      }
+      legend{
+        font-size: 25px;
+        font-family: sans-serif;
+      }
+      .formBox {
+        display:flex;
+        flex-direction: row;
+        margin: 1rem;
+      }
+      .formBox label {
+        flex-basis: 20ch;
+        text-align: end;
+        padding-right: 2rem;
+        padding-inline-end: 2rem;
+        font-size: 0.8rem;
+        font-weight: 100;
+        color: black;
+        font-weight: bold;
+      }
+      .formBox input {
+        flex-basis: auto;
+        font-size: 1rem;
+        font-weight: 100;
+        color: #333;
+        position: relative;
+        padding: 0.25rem 1rem;
+      }
+      .formBox button {
+        position: relative;
+        left: 10vw;
+        background-color: black;
+        color:white;
+        border: none;
+        padding: 0.25rem 2rem;
+        text-align: center;
+        font-size: 1rem;
+        font-weight: 200;
+        flex-basis: auto;
+        margin-left: 20ch;
+        margin-inline-start: 20ch;
+      }
+      legend {
+        margin: 0 4rem;
+        padding: 0 1rem;
+        color:black;
+      }
+      /* #img_log{
+        position: absolute;
+        margin-bottom: 12rem;
+        margin-left: 42rem;
+        top: 6.8rem;
+      }   */
+    </style>
+  </head>
+  <body>
+    <main>
+      <!-- <div id='img_log'>
+        <img src="http://centrodosorrisojp.com.br/wp-content/uploads/2019/09/logo-clinica-2.png"></img>
+      </div> -->
+      <form action="#" id="mainForm">
+        <fieldset>
+          <legend>PAINEL</legend>
+          <div class="formBox">
+            <label for="name">Nome<span style="color: red;">*</span></label
+            ><input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autocomplete="off"
+            />
+          </div>
+          <div class="formBox">
+            <label for="surname">Sobrenome</label
+            ><input
+              type="text"
+              id="surname"
+              name="surname"
+              autocomplete="off"
+            />
+          </div>
+          <div class="formBox">
+            <label for="docname">Dr(a)<span style="color: red">*</span></label
+            ><input
+              type="text"
+              id="docname"
+              required
+              name="docname"
+              autocomplete="on"
+            />
+          </div>
+          <div class="formBox">
+            <label for="room">Sala<span style="color: red;">*</span></label
+            ><input
+              type="number"
+              id="room"
+              name="room"
+              autocomplete="off"
+              min="0"
+              required
+            />
+          </div>
+          <div class="formBox">
+            <button id="btnSubmit">CHAMAR</button>
+          </div>
+        </fieldset> 
+      </form>
+    </main>
+    <script>
+    //const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+    const URL = 'http://fabioac.pythonanywhere.com/sl_patients/?format=json';
+    var timer;
+    document.addEventListener('DOMContentLoaded', () => {
+        document
+            .getElementById("mainForm")
+            .addEventListener('submit', sendForm);
+    });
+
+    function sendForm(ev){
+        ev.preventDefault();
+        var form = ev.target;
+        var formData = new FormData(form);
+        ev.target.reset();
+        
+        // convert to JSON object
+        var jsonData = form2JSON(formData);
+
+        //set headers
+        var h = new Headers();
+        h.append('Content-Type', 'application/json');
+    
+        //make request server
+        var req = new Request(URL, {
+            method: 'POST',
+            headers: h,
+            body: jsonData,
+        });
+        fetch(req)
+            .then((res) => res.json())
+            .then((data) => {
+                clearTimeout(timer);
+                console.log('Response from server');
+                console.log(data);
+                timer = setTimeout(() => {deleteData(data.id);}, 20000);
+              })
+             .catch(console.warn);
+    }
+
+    function deleteData(id){
+      var DELETE_URL = `http://fabioac.pythonanywhere.com/sl_patients/${id}/?format=json`;
+      var req = new Request(DELETE_URL, {
+        method: 'DELETE'
+      });
+      fetch(req)
+          .then((res) => res.json())
+          .then((data) => {
+             console.log(data);
+             console.log('Data deleted');
+          })
+          .catch(console.warn('Data was not deleted'));
+    }
+    
+    // convert form data to json object
+    function form2JSON(formData){
+        var Obj = {};
+        for (var key of formData.keys()){
+            Obj[key] = formData.get(key);
+        }
+        return JSON.stringify(Obj);
+    }
+    </script>
+  </body>
+</html>

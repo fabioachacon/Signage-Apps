@@ -39,16 +39,14 @@ function onSuccess(data){
         }
 }  
 
-var timer;
+var bgTimer;
 function changeBackground(){
-        if (timer) {
-           clearTimeout(timer);
-        }
-        
+        if (bgTimer) clearTimeout(bgTimer);
+             
         var header = document.getElementById('header');
 	var textEl = document.getElementById('mainText');
 
-        timer = setTimeout(function(){
+        bgTimer = setTimeout(function(){
                 header.style.display='none';
 		document.body.style.backgroundColor='transparent';
 		textEl.style.color='transparent';

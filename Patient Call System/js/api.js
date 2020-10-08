@@ -27,8 +27,8 @@ function onSuccess(data){
            IDS.push(id);
            var { name, surname, docname, room } = data; 
         
-           var name_msg = "Sr(a)." + "\n" + (name + '\n' + surname).toUpperCase();
-           var msg  = '<p>'+ name_msg + ',' +'</p>' +
+           var fullName = "Sr(a)." + "\n" + (name + '\n' + surname).toUpperCase();
+           var msg  = '<p>'+ fullName + ',' +'</p>' +
                       '<p>'+'pode se encaminhar para a sala de atendimento do(a)'+'</p>' 
                      +'<p>'+ 'Dr(a).' + '\n' + docname.toUpperCase() +'\n'+'na sala' + '\n'+ room + '</p>';
      

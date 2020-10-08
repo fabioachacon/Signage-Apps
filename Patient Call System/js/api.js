@@ -1,14 +1,7 @@
 var IDS = []; IDS.push(24);  
-var URL = 'http://fabioac.pythonanywhere.com/sl_patients/?format=json';
+var URL = '****';
 var audio = new Audio();
-audio.src = '/home/fabio/Documents/widget/ivany.mp3';
-
-var sound = new window.SpeechSynthesisUtterance();
-sound.lang='pt-BR';
-
-function isInArray(value, array) {
-  return array.indexOf(value) > -1;
-}
+audio.src = '.../alert.mp3';
 
 // Request data
 function fetch(){
@@ -34,9 +27,8 @@ function fetch(){
 function onSuccess(data){
         var data = data[data.length-1];
         var id = data.id;
-        if(!isInArray(id, IDS)){
+        if(!IDS.includes(id){
            IDS.push(id);
-
            var { name, surname, docname, room } = data; 
         
            var name_msg = "Sr(a)." + "\n" + (name + '\n' + surname).toUpperCase();

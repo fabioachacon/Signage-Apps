@@ -1,36 +1,43 @@
 var IDS = []; IDS.push(24);  
-var URL = '*****';
-
+var URL = 'http://fabioac.pythonanywhere.com/sl_patients/?format=json';
 var audio = new Audio();
-audio.src = '.../alert.mp3';
+audio.src = '/home/fabio/Documents/widget/ivany.mp3';
 
-// Request json data
+var sound = new window.SpeechSynthesisUtterance();
+sound.lang='pt-BR';
+
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
+
+// Request data
 function fetch(){
-    if (window.t) 
-       clearInterval(window.t);
 
+    if (window.t) {
+       clearInterval(window.t);
+    }
+	
     $.ajax({
         url: URL,
         method: 'GET',
         success: onSuccess,
-        error: () => {
+        error: function(xhr) {
+
            console.warn("Unable to Reach Server!");
-	   console.log("Retrying in 1 Seconds...");
-  
+	   console.log("Retrying in 2 Seconds...");
+           window.t = setInterval(fetch, 1000);
        },
-    })
-    window.t = setInterval(fetch, 1000);
+     })
+     window.t = setInterval(fetch, 1000);
 }
 
 function onSuccess(data){
         var data = data[data.length-1];
         var id = data.id;
-        if(!IDS.includes(id)){
+        if(!isInArray(id, IDS)){
            IDS.push(id);
-           var name = data.name;
-           var surname = data.surname;
-           var docname = data.docname;
-           var room = data.room;
+
+           var { name, surname, docname, room } = data; 
         
            var name_msg = "Sr(a)." + "\n" + (name + '\n' + surname).toUpperCase();
            var msg  = '<p>'+ name_msg + ',' +'</p>' +
@@ -44,16 +51,16 @@ function onSuccess(data){
         }
 }  
 
-
 var timer;
 function changeBackground(){
-        if (timer)
+        if (timer) {
            clearTimeout(timer);
- 
+        }
+        
         var header = document.getElementById('header');
 	var textEl = document.getElementById('mainText');
 
-        timer = setTimeout(() => {
+        timer = setTimeout(function(){
                 header.style.display='none';
 		document.body.style.backgroundColor='transparent';
 		textEl.style.color='transparent';

@@ -5,22 +5,18 @@ audio.src = '.../alert.mp3';
 
 // Request data
 function fetch(){
+    if (window.t) clearInterval(window.t);
 
-    if (window.t) {
-       clearInterval(window.t);
-    }
-	
     $.ajax({
         url: URL,
         method: 'GET',
         success: onSuccess,
         error: function(xhr) {
-
            console.warn("Unable to Reach Server!");
 	   console.log("Retrying in 2 Seconds...");
            window.t = setInterval(fetch, 1000);
        },
-     })
+     });
      window.t = setInterval(fetch, 1000);
 }
 

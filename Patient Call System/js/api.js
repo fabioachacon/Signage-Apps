@@ -1,7 +1,7 @@
 var IDS = []; IDS.push(24);  
 var URL = '****';
-var audio = new Audio();
-audio.src = '.../alert.mp3';
+var alert = new Audio();
+alert.src = '.../alert.mp3';
 
 // Request data
 function fetch(){
@@ -35,7 +35,7 @@ function onSuccess(data){
            var textEl = document.getElementById('mainText');
            textEl.innerHTML = msg;
            changeBackground(); // Display Message
-           audio.play()
+           alert.play()
         }
 }  
 

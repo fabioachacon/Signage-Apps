@@ -11,7 +11,7 @@ function fetch(){
         url: URL,
         method: 'GET',
         success: onSuccess,
-        error: function(xhr) {
+        error: (err) => {
            console.warn("Unable to Reach Server!");
 	   console.log("Retrying in 2 Seconds...");
            window.t = setInterval(fetch, 1000);
